@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <title></title>
+
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js"></script>
+
+  <link rel="stylesheet"
+    href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.min.css" />
+  <link rel="stylesheet"
+    href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css" />
+  <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/js/fabric.min.js"></script>
+
+  <link href="core.css" rel="stylesheet" type="text/css" />
+  <script src="Taskpane.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+ 
+  Office.initialize = function (reason) {
+
+    var ToggleElements = document.querySelectorAll(".ms-Toggle");
+    for (var i = 0; i < ToggleElements.length; i++) {
+      new fabric['Toggle'](ToggleElements[i]);
+    }
+    $('#set-delay').html("Hi Mom");
+
+    var ButtonElements = document.querySelectorAll(".ms-Button");
+  for (var i = 0; i < ButtonElements.length; i++) {
+    new fabric['Button'](ButtonElements[i], function() {
+      // Insert Event Here
+    });
+  }
+
+}
+
+
+  </script>
+
+</head>
+
+<body>
+  <div id="content-header">
+    <div class="padding">
+      <h1>Item Send Settings</h1>
+    </div>
+  </div>
+  <div id="content-main">
+    <div class="padding">
+      <p><strong>Soft/Hard Block Delay</strong></p>
+      <p>Enter number of seconds to delay the infobar:</p>
+      <input type="number" name="delay-input" id="delay-input">
+      <button type="submit" id="set-delay">Set Delay</button>
+      <br><br>
+      <p><strong>Toggle Sendable</strong></p>
+      <div class="timwan">
+        <div class="ms-Toggle timwan-child timwan-toggle">
+            <input type="checkbox" id="toggle-sendable" class="ms-Toggle-input" />
+            <label for="toggle-sendable" class="ms-Toggle-field">
+                <span class="ms-Label ms-Label--off"></span>
+                <span class="ms-Label ms-Label--on"></span>
+            </label>
+        </div>
+        <div class ="featureLabel timwan-child">
+        Customize Signature
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
