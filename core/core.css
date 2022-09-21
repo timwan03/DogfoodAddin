@@ -215,25 +215,49 @@ body {
     padding: 5px;
 }
 
-.timwan {
+.featureEntry {
     /*background: #F0F3F9*/
     border:1px solid #E2E5EA;
     background: #FBFBFD;
     border-radius: 6px;
-    display: grid; 
-    grid-template-columns: 80px 1fr; 
-    grid-gap: 2px;
-    padding: 14px 100px 10px 0px;
+    padding: 14px 0px 10px 0px;
+    overflow: hidden;
+    width: 100%;
 }
 
-
-
-.timwan-child { 
-    margin: 1px; 
-    /*border: 1px solid red;*/ 
+.featureEntry-child { 
+    margin: 1px;
+    border: 0px solid red; 
 }
 
-.timwan-toggle {
+.featureEntry-toggle {
     padding: 4px 0px 0px 10px;
+    float:left;
     /*border: 1px solid blue;*/
+}
+
+.featureEntry-Label {
+    padding: 3px 0px 0px 20px;
+    font-size: 14px;
+    float:left;
+}
+
+.rightButtons {
+    float:right;
+}
+
+.featureEntry-Button {
+    float:left;
+}
+
+.timwanButton {
+    border: 0px solid green;
+    padding: 10px 8px 5px 8px;    
+    background: #FBFBFD;
+    margin: 0px;
+}
+
+.timwan {
+    border: 0px solid blue;
+    padding: 0px 0px 0px 0px;    
 }
