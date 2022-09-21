@@ -250,14 +250,14 @@ body {
     float:left;
 }
 
-.timwanButton {
+.iconButton {
     border: 0px solid green;
     padding: 10px 8px 5px 8px;    
     background: #FBFBFD;
     margin: 0px;
 }
 
-.timwan {
+.iconButtonIcon {
     border: 0px solid blue;
     padding: 0px 0px 0px 0px;    
 }

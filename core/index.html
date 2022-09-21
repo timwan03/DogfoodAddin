@@ -18,83 +18,8 @@
   <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css">
 
   <link href="core.css" rel="stylesheet" type="text/css" />
-  <script src="Taskpane.js" type="text/javascript"></script>
 
-  <script type="text/javascript">
- 
-function AddSomething(id, text)
-{
-    var buttonText = '<div class="featureEntry">' + 
-                        '<div class="ms-Toggle featureEntry-child featureEntry-toggle">' +
-                            '<input type="checkbox" id="' + id + '" class="ms-Toggle-input" />' +
-                            '<label for="'+ id +'" class="ms-Toggle-field">' +
-                            '</label>' +
-                        '</div>' +
-                        '<div class ="featureEntry-Label featureEntry-child">' +
-                            text +
-                        '</div>' +
-                        '<div class="rightButtons">' +
-                        '<div class="featureEntry-child featureEntry-Button">' +
-                            '<button class="timwanButton">' +
-                                '<i class="ms-Icon ms-font-xl ms-Icon--Settings timwan"></i>' + 
-                            '</button>' +
-                        '</div>' +
-                        '<div class="featureEntry-child featureEntry-Button">' +
-                            '<button class="timwanButton" id="'+ id +"button" +'">' +
-                                '<i class="ms-Icon ms-font-xl ms-Icon--Info timwan"></i>' + 
-                            '</button>' +
-                        '</div>' +
-                        '</div>' +
-                    '</div>';
-                            
-    $('#buttonContainer').append(buttonText);
-
-
-    var selectorId = "#" + id;
-    var toggleButton = document.querySelector(selectorId);
-    toggleButton = toggleButton.parentElement;
-    new fabric['Toggle'](toggleButton);
-
-    selectorId = "#" + id + "button";
-    var infoButton = document.querySelector(selectorId);
-
-    $(selectorId).click(function() 
-    {
-        var div_id=$(this).attr("id");
-        $('#buttonContainer').append("" + div_id + "click");
-    });
-
-    // $('#buttonContainer').append(JSON.stringify(toggleButton));
-}
-
-  Office.initialize = function (reason) {
-
-    AddSomething("customize-signature", "Customize Signature");
-    AddSomething("delay-send", "Delay Send");
-
-
-
-    /*
-    var ToggleElements = document.querySelectorAll(".ms-Toggle");
-    for (var i = 0; i < ToggleElements.length; i++) {
-      new fabric['Toggle'](ToggleElements[i]);
-    }
-
-    $('#set-delay').html("Lois");
-
-    var ButtonElements = document.querySelectorAll(".ms-Button");
-  for (var i = 0; i < ButtonElements.length; i++) {
-    new fabric['Button'](ButtonElements[i], function() {
-      // Insert Event Here
-    });
-  }
-*/
-  
-
-}
-
-
-  </script>
+  <script src="Core.js" type="text/javascript"></script>
 
 </head>
 
@@ -115,7 +40,7 @@ function AddSomething(id, text)
       <button class="ms-Button ms-button--small">
         <i class="ms-Icon ms-font-xl ms-Icon--Settings ms-fontColor-Gray50"></i>
       </button>
-      
+      asdf
     </div>
   </div>
 
