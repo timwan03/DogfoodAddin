@@ -113,7 +113,7 @@
 
             <ExtensionPoint xsi:type="LaunchEvent">
               <LaunchEvents>
-                <LaunchEvent Type="OnNewMessageCompose" FunctionName="addDogfoodSignature" />
+                <LaunchEvent Type="OnNewMessageCompose" FunctionName="onNewMessage" />
                 <!--<LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="runLaunchEventAppointmentTests" />-->
                 <LaunchEvent Type="OnMessageSend" FunctionName="delaySend" SendMode="PromptUser"/>
                 <LaunchEvent Type="OnAppointmentSend" FunctionName="delaySend" SendMode="PromptUser"/>

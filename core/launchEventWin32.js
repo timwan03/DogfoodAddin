@@ -8,14 +8,75 @@
   * Register all necessary LaunchEvent handlers.
   */
  Office.actions.associate("delaySend", delaySend);
- Office.actions.associate("addDogfoodSignature", addDogfoodSignature);
- 
+ // Office.actions.associate("addDogfoodSignature", addDogfoodSignature);
+ Office.actions.associate("onNewMessage", onNewMessage);
+
  function getFeatureStatus()
  {
     var featureStatus = Office.context.roamingSettings.get("featureStatus");
     featureStatus = featureStatus == undefined ? 0 : featureStatus;
     return featureStatus;
  }
+
+ /**
+  * Nudge functions
+  */
+
+  function addNudge() {
+    console.log("2");
+    return new Promise(function (resolve, reject) {
+      console.log("3");
+      Office.context.mailbox.item.notificationMessages.replaceAsync(
+        "nudge_id",
+        {
+          message: "New features have been added to the Outlook Dogfood Add-in -",
+          type: Office.MailboxEnums.ItemNotificationMessageType.InsightMessage,
+          
+          icon: "dog-icon",
+          actions:
+            [
+              {
+                "actionType": Office.MailboxEnums.ActionType.ShowTaskPane,
+                "actionText": "See New Features",
+                "commandId": "msgComposeCoreButton",
+                "contextData": "{}"
+              }
+            ]
+        },
+        function (asyncResult) {
+          console.log(JSON.stringify(asyncResult));
+          resolve();
+        }
+      );
+    });
+  }
+  
+  async function onNewMessageAsync(eventObj) {
+    console.log("1");
+    await addNudge();
+    // await addDogfoodSignature();
+    // eventObj.completed();
+  }
+  
+  function onNewMessage(eventObj) {
+    onNewMessageAsync(eventObj);
+  }
+
+async function onNewMessageAsync(eventObj)
+{
+  await addNudge();
+  // await addDogfoodSignature();
+  eventObj.completed();
+}
+
+function onNewMessage(eventObj)
+{
+  onNewMessageAsync(eventObj);
+}
+
+ /**
+  * Functions for delay-send
+  */
 
  function delaySend(event) {
    var featureStatus = getFeatureStatus();
@@ -36,6 +97,12 @@ function allowSend(event)
     event.completed({ allowEvent: true });
 }
 
+
+/**
+ * 
+ * functions for customize-signature 
+ * 
+ */
 
 function addDogfoodSignature(eventObj)
 {
