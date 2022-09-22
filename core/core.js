@@ -154,9 +154,6 @@ function AddFeatureButton(id, text)
         var div_id=$(this).attr("id");
         handleHelpClick(div_id);
     });
-
-
-    // $('#buttonContainer').append(JSON.stringify(toggleButton));
 }
 
 // Functions for delay-send feature
@@ -176,13 +173,31 @@ function setDelay(event) {
     });
   }
 
-  function loadDelay_SendSettingPage()
+  function loadDelaySendSettingPage()
   {
     var currDelay = Office.context.roamingSettings.get("softBlockDelay");
     currDelay = currDelay == undefined ? 0 : currDelay;
     $('#delay-input').attr('placeholder', currDelay / 1000);
 
     $('#set-delay').click(setDelay);
+  }
+
+// Functions for set signature
+
+  function setSignature()
+  {
+    Office.context.roamingSettings.set("sigTag", $('#signature-input').val());
+    Office.context.roamingSettings.saveAsync();
+  }
+
+  function loadSetSignatureSettingPage()
+  {
+    var sigTag = Office.context.roamingSettings.get("sigTag");
+    sigTag = sigTag == undefined ? "After-hours responses are not required or expected." : sigTag;
+
+    $('#signature-input').val(sigTag);
+
+    $('#set-signature').click(setSignature);
   }
 
 
@@ -199,42 +214,14 @@ function setDelay(event) {
         AddFeatureButton(g_FeatureList[i].featureId, g_FeatureList[i].featureLabel);
     }
 
-//    AddFeatureButton("customize-signature", "Customize Signature");
-//    AddFeatureButton("delay-send", "Delay Send");
-    // g_ToggleButtons['delay-send']._toggleHandler();
-
-
     setupSubpages();
     loadFeatureStatus();
-    loadDelay_SendSettingPage();
-
-//    setToggleStatus('delay-send', true);
+    loadDelaySendSettingPage();
+    loadSetSignatureSettingPage();
 
     $('#buttonContainer').append(JSON.stringify(getToggleStatus('delay-send')) + "<br");
     $('#buttonContainer').append(JSON.stringify(getToggleStatus('customize-signature')) + "<br");
 
-/*
-    $('#himom').click(function()
-    {
-        $('#buttonContainer').append("Toggle Clicked: ");
-    });
-*/
-    /*
-    var ToggleElements = document.querySelectorAll(".ms-Toggle");
-    for (var i = 0; i < ToggleElements.length; i++) {
-      new fabric['Toggle'](ToggleElements[i]);
-    }
-
-    $('#set-delay').html("Lois");
-
-    var ButtonElements = document.querySelectorAll(".ms-Button");
-  for (var i = 0; i < ButtonElements.length; i++) {
-    new fabric['Button'](ButtonElements[i], function() {
-      // Insert Event Here
-    });
-    }
-    */
-  
 
 }
 

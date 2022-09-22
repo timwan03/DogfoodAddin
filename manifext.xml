@@ -4,7 +4,7 @@
   xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
   xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides"
   xsi:type="MailApp">
-  <Id>6283AF34-806E-2D05-BBAF-EF3384D30022</Id>
+  <Id>3213AF34-806E-2D05-BBAF-EF3384D30022</Id>
   <Version>1.1</Version>
   <ProviderName>Outlook Add-ins Team (exext)</ProviderName>
   <DefaultLocale>en-us</DefaultLocale>
@@ -113,8 +113,8 @@
 
             <ExtensionPoint xsi:type="LaunchEvent">
               <LaunchEvents>
-                <!--<LaunchEvent Type="OnNewMessageCompose" FunctionName="runLaunchEventMessageTests" />
-                <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="runLaunchEventAppointmentTests" />-->
+                <LaunchEvent Type="OnNewMessageCompose" FunctionName="addDogfoodSignature" />
+                <!--<LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="runLaunchEventAppointmentTests" />-->
                 <LaunchEvent Type="OnMessageSend" FunctionName="delaySend" SendMode="PromptUser"/>
                 <LaunchEvent Type="OnAppointmentSend" FunctionName="delaySend" SendMode="PromptUser"/>
               </LaunchEvents>

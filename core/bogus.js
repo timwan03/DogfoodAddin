@@ -7,15 +7,22 @@
  /**
   * Register all necessary LaunchEvent handlers.
   */
- Office.actions.associate("delaySend", delaySend);
- Office.actions.associate("addDogfoodSignature", addDogfoodSignature);
- 
+  if (Office.actions) {
+    Office.actions.associate("delaySend", delaySend);
+    Office.actions.associate("addDogfoodSignature", addDogfoodSignature);
+  }
+
  function getFeatureStatus()
  {
     var featureStatus = Office.context.roamingSettings.get("featureStatus");
     featureStatus = featureStatus == undefined ? 0 : featureStatus;
     return featureStatus;
  }
+
+/**
+ * 
+ * Delay Send Functions
+ */
 
  function delaySend(event) {
    var featureStatus = getFeatureStatus();
@@ -36,6 +43,10 @@ function allowSend(event)
     event.completed({ allowEvent: true });
 }
 
+ /**
+ * 
+ * Customize Signature Functions
+ */
 
 function addDogfoodSignature(eventObj)
 {
@@ -47,8 +58,6 @@ function addDogfoodSignature(eventObj)
   let time = today.getHours();
   let day = today.getDay();
   var featureStatus = getFeatureStatus();
-
-  tagline = tagline == undefined ? "default tag" : tagline;
 
   if (!(featureStatus & 0x00000002) /*FeatureMask for signature*/)
   {
@@ -84,3 +93,6 @@ function addDogfoodSignature(eventObj)
     );
   });
 }
+
+
+
