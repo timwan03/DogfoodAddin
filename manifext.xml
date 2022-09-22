@@ -4,13 +4,13 @@
   xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
   xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides"
   xsi:type="MailApp">
-  <Id>6283AFBB-806E-2D05-BBAF-EF3384D30022</Id>
+  <Id>6283AF34-806E-2D05-BBAF-EF3384D30022</Id>
   <Version>1.1</Version>
   <ProviderName>Outlook Add-ins Team (exext)</ProviderName>
   <DefaultLocale>en-us</DefaultLocale>
   <DisplayName DefaultValue="Outlook Dogfood" />
   <Description DefaultValue="An add-in used to dogfood new features internally"/>
-  <IconUrl DefaultValue="https://featuretest.olkeco.com/FeatureTest/Resources/Icon.png" />
+  <IconUrl DefaultValue="https://outlmoe/timwan/dogfoodaddin/icons/dog2.png" />
   <Hosts>
     <Host Name="Mailbox" />
   </Hosts>
@@ -91,9 +91,9 @@
                       <Description resid="paneComposeSuperTipDescription" />
                     </Supertip>
                     <Icon>
-                      <bt:Image size="16" resid="taskpanecommand-icon" />
-                      <bt:Image size="32" resid="taskpanecommand-icon" />
-                      <bt:Image size="80" resid="taskpanecommand-icon" />
+                      <bt:Image size="16" resid="dog-icon" />
+                      <bt:Image size="32" resid="dog-icon" />
+                      <bt:Image size="80" resid="dog-icon" />
                     </Icon>
                     <Action xsi:type="ShowTaskpane">
                       <SourceLocation resid="coreTaskPaneUrl" />
@@ -110,22 +110,25 @@
               <Event Type="ItemSend" FunctionExecution="synchronous" FunctionName="validateSendable" />
             </ExtensionPoint> -->
 
-            <!-- LaunchEvent 
+
             <ExtensionPoint xsi:type="LaunchEvent">
               <LaunchEvents>
-                <LaunchEvent Type="OnNewMessageCompose" FunctionName="runLaunchEventMessageTests" />
-                <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="runLaunchEventAppointmentTests" />
-                <LaunchEvent Type="OnMessageSend" FunctionName="validateSendable" SendMode="PromptUser"/>
-                <LaunchEvent Type="OnAppointmentSend" FunctionName="validateSendable" SendMode="PromptUser"/>
+                <!--<LaunchEvent Type="OnNewMessageCompose" FunctionName="runLaunchEventMessageTests" />
+                <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="runLaunchEventAppointmentTests" />-->
+                <LaunchEvent Type="OnMessageSend" FunctionName="delaySend" SendMode="PromptUser"/>
+                <LaunchEvent Type="OnAppointmentSend" FunctionName="delaySend" SendMode="PromptUser"/>
               </LaunchEvents>
               <SourceLocation resid="runtime0" />
             </ExtensionPoint>
-            -->
+
           </DesktopFormFactor>
         </Host>
       </Hosts>
       <Resources>
         <bt:Images>
+          <bt:Image id="dog-icon" DefaultValue="https://outlmoe/timwan/dogfoodaddin/icons/dog2.png"/>
+
+
           <bt:Image id="taskpanecommand-icon" DefaultValue="https://featuretest.olkeco.com/FeatureTest/Resources/Icon.png"/>
           <bt:Image id="uiless-80" DefaultValue="https://featuretest.olkeco.com/FeatureTest/DisplayDialogPlayground/app/images/uiless-80.png"/>
           <bt:Image id="taskpanecommand-80" DefaultValue="https://featuretest.olkeco.com/FeatureTest/DisplayDialogPlayground/app/images/taskpanecommand-80.png"/>
@@ -152,7 +155,7 @@
           <bt:Url id="entityViewerUrlPublic" DefaultValue="https://featuretest.olkeco.com/featureTest/EntityViewer/AppRead/Home/Home.html"></bt:Url>
           <bt:Url id="residFunctionFile" DefaultValue="https://featuretest.olkeco.com/featureTest/Compose/onlineMeeting/uiless.html"/>
           <bt:Url id="runtime0" DefaultValue="https://featuretest.olkeco.com/featureTest/Compose/launchEvent/launchEvent.html"/>
-          <bt:Url id="runtime0Js" DefaultValue="https://featuretest.olkeco.com/featureTest/Compose/launchEvent/launchEventWin32.js"/>
+          <bt:Url id="runtime0Js" DefaultValue="https://outlmoe/timwan/dogfoodaddin/core/launchEventWin32.js"/>
           <bt:Url id="itemSendTaskPaneUrl" DefaultValue="https://featuretest.olkeco.com/FeatureTest/ItemSendPlayground/Taskpane.html"/>
           <!-- <bt:Url id="Taskpane.Url" DefaultValue="https://featuretest.olkeco.com/featureTest/Read/mobileEvent/taskpane.html"/> -->
         </bt:Urls>
