@@ -7,10 +7,17 @@
  /**
   * Register all necessary LaunchEvent handlers.
   */
- Office.actions.associate("validateSendable", validateSendable);
+ Office.actions.associate("delaySend", delaySend);
  
+ function getFeatureStatus()
+ {
+    var featureStatus = Office.context.roamingSettings.get("featureStatus");
+    featureStatus = featureStatus == undefined ? 0 : featureStatus;
+    return featureStatus;
+ }
+
  function delaySend(event) {
-   var featureStatus = Office.context.roamingSettings.get("featureStatus");
+   var featureStatus = getFeatureStatus();
 
     if (featureStatus & 0x00000001 /*FeatureMask for delaySend*/)
     {
