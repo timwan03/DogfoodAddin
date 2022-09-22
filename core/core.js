@@ -33,18 +33,17 @@ function handleToggleClick()
 
     Office.context.roamingSettings.set("featureStatus", newMask);
     Office.context.roamingSettings.saveAsync();
-    $('#buttonContainer').append(newMask.toString());
 
 }
 
 function handleHelpClick(buttonId)
 {
-    $('#buttonContainer').append("Help Clicked: " + buttonId + "<br>");
+    // $('#buttonContainer').append("Help Clicked: " + buttonId + "<br>");
 }
 
 function handleSettingsClick(buttonId)
 {
-    $('#buttonContainer').append("Settings Clicked: " + buttonId + "<br>");
+    // $('#buttonContainer').append("Settings Clicked: " + buttonId + "<br>");
     
     var tabToShow = "#tab-" + buttonId;
     $("#tab-main").hide("slow");
@@ -219,8 +218,8 @@ function setDelay(event) {
     loadDelaySendSettingPage();
     loadSetSignatureSettingPage();
 
-    $('#buttonContainer').append(JSON.stringify(getToggleStatus('delay-send')) + "<br");
-    $('#buttonContainer').append(JSON.stringify(getToggleStatus('customize-signature')) + "<br");
+    // $('#buttonContainer').append(JSON.stringify(getToggleStatus('delay-send')) + "<br>");
+    // $('#buttonContainer').append(JSON.stringify(getToggleStatus('customize-signature')) + "<br>");
 
 
 }

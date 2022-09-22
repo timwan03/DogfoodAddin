@@ -44,8 +44,6 @@ function addDogfoodSignature(eventObj)
   var tagline = Office.context.roamingSettings.get("sigTag");
   let afterHoursDisclaimer = "";
   let today = new Date();
-  let time = today.getHours();
-  let day = today.getDay();
   var featureStatus = getFeatureStatus();
 
   tagline = tagline == undefined ? "default tag" : tagline;
@@ -56,10 +54,9 @@ function addDogfoodSignature(eventObj)
       return;
   }
 
-  if (day == 0 || day == 6 || time < 8 || time > 16) {
     afterHoursDisclaimer += "<br/>";
     afterHoursDisclaimer += "<span style='font-size:7.0pt'>"+ tagline +"</span>";
-  }
+
 
   let signature = "";
   signature += "<table>";
