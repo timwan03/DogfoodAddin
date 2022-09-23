@@ -15,6 +15,7 @@ var g_FeatureList = [
         "featureLabel"  :   "Customize Signature",
         "featureMask"   :   0x00000002,
     },
+    // Add new features here. 
 ];
 
 // Button Handler functions
@@ -38,7 +39,9 @@ function handleToggleClick()
 
 function handleHelpClick(buttonId)
 {
-    // $('#buttonContainer').append("Help Clicked: " + buttonId + "<br>");
+    Office.context.roamingSettings.set("lastNudge", 0x00000000);
+    Office.context.roamingSettings.saveAsync();
+    // TODO: What do we want to do for help?
 }
 
 function handleSettingsClick(buttonId)
@@ -92,6 +95,18 @@ function loadFeatureStatus()
             setToggleStatus(g_FeatureList[i].featureId, true);
         }
     }
+}
+
+function setNudgeBarMask()
+{
+    var nudgeMask = 0;
+    for (var i = 0; i < g_FeatureList.length; i++) 
+    {
+        nudgeMask |= g_FeatureList[i].featureMask;
+    }
+
+    Office.context.roamingSettings.set("lastNudge", nudgeMask);
+    Office.context.roamingSettings.saveAsync();
 }
 
 function AddFeatureButton(id, text)
@@ -215,12 +230,8 @@ function setDelay(event) {
 
     setupSubpages();
     loadFeatureStatus();
+    setNudgeBarMask();
     loadDelaySendSettingPage();
     loadSetSignatureSettingPage();
-
-    // $('#buttonContainer').append(JSON.stringify(getToggleStatus('delay-send')) + "<br>");
-    // $('#buttonContainer').append(JSON.stringify(getToggleStatus('customize-signature')) + "<br>");
-
-
 }
 

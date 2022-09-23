@@ -3,12 +3,12 @@
  * @author : Microsoft Corporation
  */
 
+ const LAST_NUDGE_VALUE = 0x00000003; // 0x00000003;
  
  /**
   * Register all necessary LaunchEvent handlers.
   */
  Office.actions.associate("delaySend", delaySend);
-
  Office.actions.associate("onNewMessage", onNewMessage);
 
  function getFeatureStatus()
@@ -24,7 +24,15 @@
 
   function addNudge() {
     return new Promise(function (resolve, reject) {
-      console.log("3");
+      
+      var nudgeMask = Office.context.roamingSettings.get("lastNudge");
+
+      if (nudgeMask == LAST_NUDGE_VALUE)
+      {
+        resolve();
+        return;
+      }
+
       Office.context.mailbox.item.notificationMessages.replaceAsync(
         "nudge_id",
         {
@@ -45,6 +53,7 @@
         function (asyncResult) {
           console.log(JSON.stringify(asyncResult));
           resolve();
+          return;
         }
       );
     });
@@ -123,6 +132,7 @@ function addSig()
         function (asyncResult)
         {
             resolve();
+            return;
         }
       );
     });
