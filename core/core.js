@@ -127,11 +127,12 @@ function AddFeatureButton(id, text)
                                 '<i class="ms-Icon ms-font-xl ms-Icon--Settings iconButtonIcon"></i>' + 
                             '</button>' +
                         '</div>' +
+                        /* <!-- Remove Info Button
                         '<div class="featureEntry-child featureEntry-Button">' +
                             '<button class="iconButton" id="'+ id + HELP_SUFFIX +'">' +
                                 '<i class="ms-Icon ms-font-xl ms-Icon--Info iconButtonIcon"></i>' + 
                             '</button>' +
-                        '</div>' +
+                        '</div>' + */
                         '</div>' +
                     '</div>';
     
@@ -192,7 +193,7 @@ function setDelay(event) {
     var currDelay = Office.context.roamingSettings.get("softBlockDelay");
     currDelay = currDelay == undefined ? 0 : currDelay;
     $('#delay-input').attr('placeholder', currDelay / 1000);
-
+    $('#delay-input').val(currDelay / 1000);
     $('#set-delay').click(setDelay);
   }
 
